@@ -364,7 +364,7 @@ class JsFormValidatorFactory
      *
      * @return void
      */
-    public function composeValidationData(array &$container, array $constraints, array $getters): void
+    public function composeValidationData(?array &$container, array $constraints, array $getters): void
     {
         if (null == $container) {
             $container = array();
