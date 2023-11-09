@@ -15,23 +15,20 @@ use Symfony\Component\Form\FormInterface;
  */
 class SubscriberToQueue implements EventSubscriberInterface
 {
-    /**
-     * @var JsFormValidatorFactory
-     */
-    protected $factory;
 
     /**
      * @param JsFormValidatorFactory $factory
      */
-    public function __construct(JsFormValidatorFactory $factory)
+    public function __construct(
+        protected JsFormValidatorFactory $factory
+    )
     {
-        $this->factory = $factory;
     }
 
     /**
      * @return array
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return array(FormEvents::POST_SET_DATA => array('onFormSetData', -10));
     }
@@ -39,7 +36,7 @@ class SubscriberToQueue implements EventSubscriberInterface
     /**
      * @param FormEvent $event
      */
-    public function onFormSetData(FormEvent $event)
+    public function onFormSetData(FormEvent $event): void
     {
         /** @var Form $form */
         $form         = $event->getForm();
@@ -60,7 +57,7 @@ class SubscriberToQueue implements EventSubscriberInterface
      *
      * @return \Symfony\Component\Form\Form
      */
-    protected function getParent($element)
+    protected function getParent($element): FormInterface|Form
     {
         if (!$element->getParent()) {
             return $element;

@@ -21,7 +21,7 @@ class AjaxController extends Controller
      *
      * @return JsonResponse
      */
-    public function checkUniqueEntityAction(Request $request)
+    public function checkUniqueEntityAction(Request $request): JsonResponse
     {
         $data = $request->request->all();
         foreach ($data['data'] as $value) {

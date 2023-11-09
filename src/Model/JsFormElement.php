@@ -11,48 +11,24 @@ namespace Fp\JsFormValidatorBundle\Model;
  */
 class JsFormElement extends JsModelAbstract
 {
-    /**
-     * @var string
-     */
-    public $id;
+    public string $id;
 
-    /**
-     * @var string
-     */
-    public $name;
+    public string $name;
 
-    /**
-     * @var string
-     */
-    public $type;
+    public string $type;
 
-    /**
-     * @var string
-     */
-    public $invalidMessage;
+    public string $invalidMessage;
 
-    /**
-     * @var bool
-     */
-    public $bubbling = false;
+    public bool $bubbling = false;
 
-    /**
-     * @var array
-     */
-    public $data = array();
+    public array $data = array();
 
-    /**
-     * @var array
-     */
-    public $transformers = array();
+    public array $transformers = array();
 
     /**
      * @var JsFormElement[]
      */
-    public $children = array();
+    public array $children = array();
 
-    /**
-     * @var JsFormElement
-     */
-    public $prototype = null;
+    public ?JsFormElement $prototype = null;
 } 

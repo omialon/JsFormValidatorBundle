@@ -17,13 +17,13 @@ class JsFormValidatorTwigExtension extends AbstractExtension
     /**
      * @var JsFormValidatorFactory
      */
-    protected $factory;
+    protected JsFormValidatorFactory $factory;
 
     /**
      * @return JsFormValidatorFactory
      * @codeCoverageIgnore
      */
-    protected function getFactory()
+    protected function getFactory(): JsFormValidatorFactory
     {
         return $this->factory;
     }
@@ -41,7 +41,7 @@ class JsFormValidatorTwigExtension extends AbstractExtension
     /**
      * {@inheritdoc}
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return array(
             new TwigFunction('init_js_validation', array($this, 'getJsValidator'), array(
@@ -53,19 +53,19 @@ class JsFormValidatorTwigExtension extends AbstractExtension
         );
     }
 
-    public function getConfig()
+    public function getConfig(): string
     {
         return $this->getFactory()->getJsConfigString();
     }
 
     /**
      * @param null|string|FormView $form
-     * @param bool                 $onLoad
-     * @param bool                 $wrapped
+     * @param bool $onLoad
+     * @param bool $wrapped
      *
      * @return string
      */
-    public function getJsValidator($form = null, $onLoad = true, $wrapped = true)
+    public function getJsValidator(mixed $form = null, bool $onLoad = true, bool $wrapped = true): string
     {
         if ($form instanceof FormView) {
             $form = $form->vars['name'];
@@ -84,7 +84,7 @@ class JsFormValidatorTwigExtension extends AbstractExtension
      * @return string The extension name
      * @codeCoverageIgnore
      */
-    public function getName()
+    public function getName(): string
     {
         return 'fp_js_form_validator';
     }

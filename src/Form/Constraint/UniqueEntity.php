@@ -9,19 +9,16 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity as BaseUniqueEnti
  */
 class UniqueEntity extends BaseUniqueEntity
 {
-    /**
-     * @var string
-     */
-    public $entityName = null;
 
     /**
      * @param BaseUniqueEntity $base
-     * @param string           $entityName
+     * @param string|null $entityName
      */
-    public function __construct(BaseUniqueEntity $base, $entityName)
+    public function __construct(
+        BaseUniqueEntity $base,
+        public ?string $entityName = null
+    )
     {
-        $this->entityName = $entityName;
-
         foreach ($base as $prop => $value) {
             $this->{$prop} = $value;
         }

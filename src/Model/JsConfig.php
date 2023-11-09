@@ -14,5 +14,5 @@ class JsConfig extends JsModelAbstract
     /**
      * @var array
      */
-    public $routing = array();
+    public array $routing = array();
 } 

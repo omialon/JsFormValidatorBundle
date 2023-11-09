@@ -15,24 +15,21 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class FormExtension extends AbstractTypeExtension
 {
-    /**
-     * @var JsFormValidatorFactory
-     */
-    protected $factory;
 
     /**
      * @param JsFormValidatorFactory $factory
      */
-    public function __construct(JsFormValidatorFactory $factory)
+    public function __construct(
+        protected JsFormValidatorFactory $factory
+    )
     {
-        $this->factory = $factory;
     }
 
     /**
      * @param FormBuilderInterface $builder
      * @param array                $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->addEventSubscriber(new SubscriberToQueue($this->factory));
     }
@@ -40,7 +37,7 @@ class FormExtension extends AbstractTypeExtension
     /**
      * @param OptionsResolver $resolver
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults(array('js_validation' => true));
     }
@@ -50,7 +47,7 @@ class FormExtension extends AbstractTypeExtension
      *
      * @return string The name of the type being extended
      */
-    public function getExtendedType()
+    public function getExtendedType(): string
     {
         return FormType::class;
     }

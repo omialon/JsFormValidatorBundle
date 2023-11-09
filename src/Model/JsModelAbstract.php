@@ -16,7 +16,7 @@ abstract class JsModelAbstract
      *
      * @return string
      */
-    public function toJsString()
+    public function toJsString(): mixed
     {
         return self::phpValueToJs($this->toArray());
     }
@@ -24,7 +24,7 @@ abstract class JsModelAbstract
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->toJsString();
     }
@@ -36,7 +36,7 @@ abstract class JsModelAbstract
      *
      * @return string
      */
-    public static function phpValueToJs($value)
+    public static function phpValueToJs(mixed $value): mixed
     {
         // For object which has own __toString method
         if ($value instanceof JsModelAbstract) {
@@ -92,7 +92,7 @@ abstract class JsModelAbstract
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         $result = array();
         foreach ($this as $key => $value) {
